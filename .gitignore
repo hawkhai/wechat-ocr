@@ -19,3 +19,4 @@ target/
 compile_commands.json
 build*/
 .cache/
+/8082.zip
