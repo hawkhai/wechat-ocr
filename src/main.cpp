@@ -11,11 +11,19 @@ public:
 	{}
 	void OnOCRResult(result_t& ocr_response) override
 	{
-		printf("OCR errcode=%d\n", ocr_response.errcode);
+		printf("OCR errcode=%d, %dx%d\n", ocr_response.errcode, ocr_response.width, ocr_response.height);
 		for (auto& text : ocr_response.ocr_response) {
-			printf("[%.2f,%.2f,%.2f,%.2f] r=%.3f %s\n", text.left, text.top, text.right, text.bottom,
-			    text.rate, text.text.c_str());
+			printf("[%.2f,%.2f,%.2f,%.2f] r=%.3f", text.left, text.top, text.right, text.bottom, text.rate);
+			if (text.has_bold) printf(" bold=%d", text.bold);
+			printf(" %s\n", text.text.c_str());
+			for (auto& ch : text.details) {
+				printf("  [%.1f,%.1f,%.1f,%.1f] %s\n", ch.left, ch.top, ch.right, ch.bottom, ch.chars.c_str());
+			}
 		}
+		if (!ocr_response.cpu_report.empty())
+			printf("cpu_report: %s\n", ocr_response.cpu_report.c_str());
+		if (ocr_response.time_used > 0)
+			printf("time_used: %llu\n", (unsigned long long)ocr_response.time_used);
 	}
 };
 

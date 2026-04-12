@@ -139,6 +139,17 @@ static PyObject* py_ocr(PyObject* self, PyObject* args) {
 	}
 	PyDict_SetItemString(dict, "ocr_response", tmpo);
 	Py_DECREF(tmpo);
+
+	if (!res.cpu_report.empty()) {
+		tmpo = PyUnicode_FromString(res.cpu_report.c_str());
+		PyDict_SetItemString(dict, "cpu_report", tmpo);
+		Py_DECREF(tmpo);
+	}
+	if (res.time_used > 0) {
+		tmpo = PyLong_FromUnsignedLongLong(res.time_used);
+		PyDict_SetItemString(dict, "time_used", tmpo);
+		Py_DECREF(tmpo);
+	}
 	return dict;
 }
 

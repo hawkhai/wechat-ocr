@@ -28,6 +28,8 @@ public:
 		int errcode;
 		int width, height;
 		std::vector<text_block_t> ocr_response;
+		string cpu_report;
+		uint64_t time_used = 0;
 	};
 	static constexpr int STATE_INITED = 2; // extend state vars from base class.
 protected:

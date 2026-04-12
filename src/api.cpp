@@ -95,7 +95,12 @@ bool wechat_ocr(LPCTSTR ocr_exe, LPCTSTR wechat_dir, const char * imgfn, void(*s
 		if (json.back() == ',') {
 			json.pop_back();
 		}
-		json += "]}";
+		json += "]";
+		if (!res.cpu_report.empty())
+			json += ",\"cpu_report\":\"" + json_encode(res.cpu_report) + "\"";
+		if (res.time_used > 0)
+			json += ",\"time_used\":" + std::to_string(res.time_used);
+		json += "}";
 	}
 	if (set_res) {
 		set_res(json.c_str());

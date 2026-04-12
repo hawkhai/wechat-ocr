@@ -267,7 +267,10 @@ void CWeChatOCR::ReadOnPush(uint32_t request_id, std::span<std::byte> request_in
 			if (!resp.ParseFromArray(request_info.data(), (int)request_info.size()))
 				return;
 			if (resp.has_res()) {
-				ocr_copy(resp.res(), resp.err_code(), res);
+				const auto& ri = resp.res();
+				ocr_copy(ri, resp.err_code(), res);
+				if (ri.has_cpu_report()) res.cpu_report = ri.cpu_report();
+				if (ri.has_time_used()) res.time_used = ri.time_used();
 			} else {
 				res.errcode = resp.has_err_code() ? resp.err_code() : -1;
 			}
@@ -288,7 +291,9 @@ void CWeChatOCR::ReadOnPush(uint32_t request_id, std::span<std::byte> request_in
 				break;
 			case 0:
 				if (resp.has_ocr_result()) {
-					ocr_copy(resp.ocr_result(), resp.err_code(), res);
+					const auto& ori = resp.ocr_result();
+					ocr_copy(ori, resp.err_code(), res);
+					if (ori.has_unk4()) res.cpu_report = ori.unk4();
 				} else {
 					res.errcode = resp.has_err_code() ? resp.err_code() : -1;
 				}
