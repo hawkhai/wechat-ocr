@@ -5,10 +5,10 @@ import "ocr_common.proto";
 message OcrInputBuffer {
 	// 看起来有两种传递图片的方式。
 	// 第一种是只传文件路径 pic_path = "C:/path/to/xxx.png"
-	// 第二种是用字节流传，猜测需要用到u2,u3,pic_data变量。暂时微信没有用到，可能是为将来保留
+	// 第二种是用字节流传，需要用到pic_width,pic_height,pic_data变量。暂时微信没有用到，可能是为将来保留
 	optional string pic_path = 1;
-	optional uint32 u2 = 2;
-	optional uint32 u3 = 3;
+	optional uint32 pic_width = 2;		// 图片宽度 (字节流传图时使用)
+	optional uint32 pic_height = 3;		// 图片高度 (字节流传图时使用)
 	optional bytes pic_data = 4;
 }
 

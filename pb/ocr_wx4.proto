@@ -15,8 +15,8 @@ message ReqType {
 message ParseOCRReqMessage {
 	optional uint64 task_id = 1;
 	optional string pic_path = 2;
-	optional uint32 xx3 = 3;
-	optional uint32 xx4 = 4;
+	optional uint32 pic_width = 3;		// 图片宽度 (字节流传图时使用)
+	optional uint32 pic_height = 4;		// 图片高度 (字节流传图时使用)
 	optional bytes pic_data = 5;
 	optional ReqType rt = 6;
 }
