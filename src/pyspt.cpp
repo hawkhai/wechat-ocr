@@ -88,6 +88,27 @@ static PyObject* py_ocr(PyObject* self, PyObject* args) {
 		tmpo3 = PyFloat_FromDouble(kv.rate);
 		PyDict_SetItemString(tmpo2, "rate", tmpo3);
 		Py_DECREF(tmpo3);
+		if (kv.has_bold) {
+			tmpo3 = PyBool_FromLong(kv.bold);
+			PyDict_SetItemString(tmpo2, "bold", tmpo3);
+			Py_DECREF(tmpo3);
+		}
+		if (kv.has_line_box) {
+			tmpo3 = Py_BuildValue("[[ff][ff][ff][ff]]",
+				kv.line_box.x1, kv.line_box.y1, kv.line_box.x2, kv.line_box.y2,
+				kv.line_box.x3, kv.line_box.y3, kv.line_box.x4, kv.line_box.y4);
+			PyDict_SetItemString(tmpo2, "line_box", tmpo3);
+			Py_DECREF(tmpo3);
+		}
+		if (kv.has_text_block_origin) {
+			tmpo3 = Py_BuildValue("[[ff][ff][ff][ff]]",
+				kv.text_block_origin.x1, kv.text_block_origin.y1,
+				kv.text_block_origin.x2, kv.text_block_origin.y2,
+				kv.text_block_origin.x3, kv.text_block_origin.y3,
+				kv.text_block_origin.x4, kv.text_block_origin.y4);
+			PyDict_SetItemString(tmpo2, "text_block_origin", tmpo3);
+			Py_DECREF(tmpo3);
+		}
 		PyList_SetItem(tmpo, idx++, tmpo2);
 		// Py_DECREF(tmpo2); // note: no need to decref tmpo2, PyList_SetItem already steals the reference.
 	}

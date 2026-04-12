@@ -4,6 +4,9 @@
 class EXPORTED_API CWeChatOCR : protected CMojoCall
 {
 public:
+	struct box4_t {
+		float x1, y1, x2, y2, x3, y3, x4, y4; // topleft, topright, bottomright, bottomleft
+	};
 	struct simple_t {
 		string chars;
 		float left, top, right, bottom;
@@ -13,6 +16,12 @@ public:
 		float rate;
 		string text;
 		std::vector<simple_t> details;
+		bool has_bold;
+		bool bold;
+		bool has_line_box;
+		box4_t line_box;
+		bool has_text_block_origin;
+		box4_t text_block_origin;
 	};
 	struct result_t {
 		string imgpath;

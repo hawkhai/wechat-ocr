@@ -61,7 +61,7 @@ CWeChatOCR::CWeChatOCR(LPCTSTR exe0, LPCTSTR wcdir0)
 		m_args["user-lib-dir"] = wcdir;
 		// 测试 wc4.0, 改成 dll了
 		auto fn_ext = exe.substr(exe.size() - 4);
-		if (wcsicmp(fn_ext.c_str(), L".dll") == 0) {
+		if (_wcsicmp(fn_ext.c_str(), L".dll") == 0) {
 			auto exe2 = wcdir;
 			if (exe2.back() != '\\') exe2.push_back('\\');
 			exe2 += L"..\\weixin.exe";
@@ -187,13 +187,21 @@ void CWeChatOCR::ReadOnPush(uint32_t request_id, std::span<std::byte> request_in
 			m_cv_state.notify_all();
 		}
 	};
-	auto ocr_copy = [this](const auto & ores, int ec, result_t& res) {
+	auto box_copy = [](const ocr_common::Box& box) -> box4_t {
+		return {
+			box.topleft().x(), box.topleft().y(),
+			box.topright().x(), box.topright().y(),
+			box.bottomright().x(), box.bottomright().y(),
+			box.bottomleft().x(), box.bottomleft().y(),
+		};
+	};
+	auto ocr_copy = [this, &box_copy](const auto & ores, int ec, result_t& res) {
 		res.width = ores.img_width();
 		res.height = ores.img_height();
 		res.errcode = ec;
 		res.ocr_response.reserve(ores.lines_size());
 		for (int i = 0, mi = ores.lines_size(); i < mi; ++i) {
-			text_block_t tb;
+			text_block_t tb{};
 			const ocr_common::OCRResultLine& single_result = ores.lines(i);
 			tb.left = single_result.left();
 			tb.top = single_result.top();
@@ -201,6 +209,14 @@ void CWeChatOCR::ReadOnPush(uint32_t request_id, std::span<std::byte> request_in
 			tb.bottom = single_result.bottom();
 			tb.rate = single_result.rate();
 			tb.text = single_result.text();
+			tb.has_bold = single_result.has_bold();
+			tb.bold = single_result.bold();
+			tb.has_line_box = single_result.has_line_box();
+			if (tb.has_line_box)
+				tb.line_box = box_copy(single_result.line_box());
+			tb.has_text_block_origin = single_result.has_text_block_origin();
+			if (tb.has_text_block_origin)
+				tb.text_block_origin = box_copy(single_result.text_block_origin());
 			for (auto & block : single_result.blocks()) {
 				simple_t sb;
 				sb.chars = block.chars();

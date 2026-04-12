@@ -52,6 +52,13 @@ bool wechat_ocr(LPCTSTR ocr_exe, LPCTSTR wechat_dir, const char * imgfn, void(*s
 		json += "\"imgpath\":\"" + json_encode(res.imgpath) + "\",";
 		json += "\"width\":" + std::to_string(res.width) + ",";
 		json += "\"height\":" + std::to_string(res.height) + ",";
+		auto json_box4 = [](const CWeChatOCR::box4_t& b) -> string {
+			char buf[256];
+			snprintf(buf, sizeof(buf),
+				"[[%.1f,%.1f],[%.1f,%.1f],[%.1f,%.1f],[%.1f,%.1f]]",
+				b.x1, b.y1, b.x2, b.y2, b.x3, b.y3, b.x4, b.y4);
+			return buf;
+		};
 		json += "\"ocr_response\":[";
 		for (auto& blk : res.ocr_response) {
 			json += "{";
@@ -61,6 +68,12 @@ bool wechat_ocr(LPCTSTR ocr_exe, LPCTSTR wechat_dir, const char * imgfn, void(*s
 			json += "\"bottom\":" + std::to_string(blk.bottom) + ",";
 			json += "\"rate\":" + std::to_string(blk.rate) + ",";
 			json += "\"text\":\"" + json_encode(blk.text) + "\"";
+			if (blk.has_bold)
+				json += ",\"bold\":" + string(blk.bold ? "true" : "false");
+			if (blk.has_line_box)
+				json += ",\"line_box\":" + json_box4(blk.line_box);
+			if (blk.has_text_block_origin)
+				json += ",\"text_block_origin\":" + json_box4(blk.text_block_origin);
 			if (!blk.details.empty()) {
 				json += ",\"details\":[";
 				for (auto& ch : blk.details) {
