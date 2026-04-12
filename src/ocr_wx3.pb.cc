@@ -24,8 +24,8 @@ PROTOBUF_CONSTEXPR OcrInputBuffer::OcrInputBuffer(
   , /*decltype(_impl_._cached_size_)*/{}
   , /*decltype(_impl_.pic_path_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.pic_data_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
-  , /*decltype(_impl_.u2_)*/0u
-  , /*decltype(_impl_.u3_)*/0u} {}
+  , /*decltype(_impl_.pic_width_)*/0u
+  , /*decltype(_impl_.pic_height_)*/0u} {}
 struct OcrInputBufferDefaultTypeInternal {
   PROTOBUF_CONSTEXPR OcrInputBufferDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -95,10 +95,10 @@ class OcrInputBuffer::_Internal {
   static void set_has_pic_path(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_u2(HasBits* has_bits) {
+  static void set_has_pic_width(HasBits* has_bits) {
     (*has_bits)[0] |= 4u;
   }
-  static void set_has_u3(HasBits* has_bits) {
+  static void set_has_pic_height(HasBits* has_bits) {
     (*has_bits)[0] |= 8u;
   }
   static void set_has_pic_data(HasBits* has_bits) {
@@ -120,8 +120,8 @@ OcrInputBuffer::OcrInputBuffer(const OcrInputBuffer& from)
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.pic_path_){}
     , decltype(_impl_.pic_data_){}
-    , decltype(_impl_.u2_){}
-    , decltype(_impl_.u3_){}};
+    , decltype(_impl_.pic_width_){}
+    , decltype(_impl_.pic_height_){}};
 
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   _impl_.pic_path_.InitDefault();
@@ -140,9 +140,9 @@ OcrInputBuffer::OcrInputBuffer(const OcrInputBuffer& from)
     _this->_impl_.pic_data_.Set(from._internal_pic_data(), 
       _this->GetArenaForAllocation());
   }
-  ::memcpy(&_impl_.u2_, &from._impl_.u2_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.u3_) -
-    reinterpret_cast<char*>(&_impl_.u2_)) + sizeof(_impl_.u3_));
+  ::memcpy(&_impl_.pic_width_, &from._impl_.pic_width_,
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.pic_height_) -
+    reinterpret_cast<char*>(&_impl_.pic_width_)) + sizeof(_impl_.pic_height_));
   // @@protoc_insertion_point(copy_constructor:wx3.OcrInputBuffer)
 }
 
@@ -155,8 +155,8 @@ inline void OcrInputBuffer::SharedCtor(
     , /*decltype(_impl_._cached_size_)*/{}
     , decltype(_impl_.pic_path_){}
     , decltype(_impl_.pic_data_){}
-    , decltype(_impl_.u2_){0u}
-    , decltype(_impl_.u3_){0u}
+    , decltype(_impl_.pic_width_){0u}
+    , decltype(_impl_.pic_height_){0u}
   };
   _impl_.pic_path_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -203,9 +203,9 @@ void OcrInputBuffer::Clear() {
     }
   }
   if (cached_has_bits & 0x0000000cu) {
-    ::memset(&_impl_.u2_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.u3_) -
-        reinterpret_cast<char*>(&_impl_.u2_)) + sizeof(_impl_.u3_));
+    ::memset(&_impl_.pic_width_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&_impl_.pic_height_) -
+        reinterpret_cast<char*>(&_impl_.pic_width_)) + sizeof(_impl_.pic_height_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<std::string>();
@@ -228,20 +228,20 @@ const char* OcrInputBuffer::_InternalParse(const char* ptr, ::_pbi::ParseContext
         } else
           goto handle_unusual;
         continue;
-      // optional uint32 u2 = 2;
+      // optional uint32 pic_width = 2;
       case 2:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 16)) {
-          _Internal::set_has_u2(&has_bits);
-          _impl_.u2_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _Internal::set_has_pic_width(&has_bits);
+          _impl_.pic_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional uint32 u3 = 3;
+      // optional uint32 pic_height = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _Internal::set_has_u3(&has_bits);
-          _impl_.u3_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _Internal::set_has_pic_height(&has_bits);
+          _impl_.pic_height_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -295,16 +295,16 @@ uint8_t* OcrInputBuffer::_InternalSerialize(
         1, this->_internal_pic_path(), target);
   }
 
-  // optional uint32 u2 = 2;
-  if (_internal_has_u2()) {
+  // optional uint32 pic_width = 2;
+  if (_internal_has_pic_width()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_u2(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(2, this->_internal_pic_width(), target);
   }
 
-  // optional uint32 u3 = 3;
-  if (_internal_has_u3()) {
+  // optional uint32 pic_height = 3;
+  if (_internal_has_pic_height()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_u3(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_pic_height(), target);
   }
 
   // optional bytes pic_data = 4;
@@ -345,14 +345,14 @@ size_t OcrInputBuffer::ByteSizeLong() const {
           this->_internal_pic_data());
     }
 
-    // optional uint32 u2 = 2;
+    // optional uint32 pic_width = 2;
     if (cached_has_bits & 0x00000004u) {
-      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_u2());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_pic_width());
     }
 
-    // optional uint32 u3 = 3;
+    // optional uint32 pic_height = 3;
     if (cached_has_bits & 0x00000008u) {
-      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_u3());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_pic_height());
     }
 
   }
@@ -386,10 +386,10 @@ void OcrInputBuffer::MergeFrom(const OcrInputBuffer& from) {
       _this->_internal_set_pic_data(from._internal_pic_data());
     }
     if (cached_has_bits & 0x00000004u) {
-      _this->_impl_.u2_ = from._impl_.u2_;
+      _this->_impl_.pic_width_ = from._impl_.pic_width_;
     }
     if (cached_has_bits & 0x00000008u) {
-      _this->_impl_.u3_ = from._impl_.u3_;
+      _this->_impl_.pic_height_ = from._impl_.pic_height_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
@@ -422,11 +422,11 @@ void OcrInputBuffer::InternalSwap(OcrInputBuffer* other) {
       &other->_impl_.pic_data_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(OcrInputBuffer, _impl_.u3_)
-      + sizeof(OcrInputBuffer::_impl_.u3_)
-      - PROTOBUF_FIELD_OFFSET(OcrInputBuffer, _impl_.u2_)>(
-          reinterpret_cast<char*>(&_impl_.u2_),
-          reinterpret_cast<char*>(&other->_impl_.u2_));
+      PROTOBUF_FIELD_OFFSET(OcrInputBuffer, _impl_.pic_height_)
+      + sizeof(OcrInputBuffer::_impl_.pic_height_)
+      - PROTOBUF_FIELD_OFFSET(OcrInputBuffer, _impl_.pic_width_)>(
+          reinterpret_cast<char*>(&_impl_.pic_width_),
+          reinterpret_cast<char*>(&other->_impl_.pic_width_));
 }
 
 std::string OcrInputBuffer::GetTypeName() const {

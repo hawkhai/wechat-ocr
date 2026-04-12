@@ -485,8 +485,8 @@ class ParseOCRReqMessage final :
     kPicDataFieldNumber = 5,
     kRtFieldNumber = 6,
     kTaskIdFieldNumber = 1,
-    kXx3FieldNumber = 3,
-    kXx4FieldNumber = 4,
+    kPicWidthFieldNumber = 3,
+    kPicHeightFieldNumber = 4,
   };
   // optional string pic_path = 2;
   bool has_pic_path() const;
@@ -555,30 +555,30 @@ class ParseOCRReqMessage final :
   void _internal_set_task_id(uint64_t value);
   public:
 
-  // optional uint32 xx3 = 3;
-  bool has_xx3() const;
+  // optional uint32 pic_width = 3;
+  bool has_pic_width() const;
   private:
-  bool _internal_has_xx3() const;
+  bool _internal_has_pic_width() const;
   public:
-  void clear_xx3();
-  uint32_t xx3() const;
-  void set_xx3(uint32_t value);
+  void clear_pic_width();
+  uint32_t pic_width() const;
+  void set_pic_width(uint32_t value);
   private:
-  uint32_t _internal_xx3() const;
-  void _internal_set_xx3(uint32_t value);
+  uint32_t _internal_pic_width() const;
+  void _internal_set_pic_width(uint32_t value);
   public:
 
-  // optional uint32 xx4 = 4;
-  bool has_xx4() const;
+  // optional uint32 pic_height = 4;
+  bool has_pic_height() const;
   private:
-  bool _internal_has_xx4() const;
+  bool _internal_has_pic_height() const;
   public:
-  void clear_xx4();
-  uint32_t xx4() const;
-  void set_xx4(uint32_t value);
+  void clear_pic_height();
+  uint32_t pic_height() const;
+  void set_pic_height(uint32_t value);
   private:
-  uint32_t _internal_xx4() const;
-  void _internal_set_xx4(uint32_t value);
+  uint32_t _internal_pic_height() const;
+  void _internal_set_pic_height(uint32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:wx4.ParseOCRReqMessage)
@@ -595,8 +595,8 @@ class ParseOCRReqMessage final :
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr pic_data_;
     ::wx4::ReqType* rt_;
     uint64_t task_id_;
-    uint32_t xx3_;
-    uint32_t xx4_;
+    uint32_t pic_width_;
+    uint32_t pic_height_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_ocr_5fwx4_2eproto;
@@ -1497,60 +1497,60 @@ inline void ParseOCRReqMessage::set_allocated_pic_path(std::string* pic_path) {
   // @@protoc_insertion_point(field_set_allocated:wx4.ParseOCRReqMessage.pic_path)
 }
 
-// optional uint32 xx3 = 3;
-inline bool ParseOCRReqMessage::_internal_has_xx3() const {
+// optional uint32 pic_width = 3;
+inline bool ParseOCRReqMessage::_internal_has_pic_width() const {
   bool value = (_impl_._has_bits_[0] & 0x00000010u) != 0;
   return value;
 }
-inline bool ParseOCRReqMessage::has_xx3() const {
-  return _internal_has_xx3();
+inline bool ParseOCRReqMessage::has_pic_width() const {
+  return _internal_has_pic_width();
 }
-inline void ParseOCRReqMessage::clear_xx3() {
-  _impl_.xx3_ = 0u;
+inline void ParseOCRReqMessage::clear_pic_width() {
+  _impl_.pic_width_ = 0u;
   _impl_._has_bits_[0] &= ~0x00000010u;
 }
-inline uint32_t ParseOCRReqMessage::_internal_xx3() const {
-  return _impl_.xx3_;
+inline uint32_t ParseOCRReqMessage::_internal_pic_width() const {
+  return _impl_.pic_width_;
 }
-inline uint32_t ParseOCRReqMessage::xx3() const {
-  // @@protoc_insertion_point(field_get:wx4.ParseOCRReqMessage.xx3)
-  return _internal_xx3();
+inline uint32_t ParseOCRReqMessage::pic_width() const {
+  // @@protoc_insertion_point(field_get:wx4.ParseOCRReqMessage.pic_width)
+  return _internal_pic_width();
 }
-inline void ParseOCRReqMessage::_internal_set_xx3(uint32_t value) {
+inline void ParseOCRReqMessage::_internal_set_pic_width(uint32_t value) {
   _impl_._has_bits_[0] |= 0x00000010u;
-  _impl_.xx3_ = value;
+  _impl_.pic_width_ = value;
 }
-inline void ParseOCRReqMessage::set_xx3(uint32_t value) {
-  _internal_set_xx3(value);
-  // @@protoc_insertion_point(field_set:wx4.ParseOCRReqMessage.xx3)
+inline void ParseOCRReqMessage::set_pic_width(uint32_t value) {
+  _internal_set_pic_width(value);
+  // @@protoc_insertion_point(field_set:wx4.ParseOCRReqMessage.pic_width)
 }
 
-// optional uint32 xx4 = 4;
-inline bool ParseOCRReqMessage::_internal_has_xx4() const {
+// optional uint32 pic_height = 4;
+inline bool ParseOCRReqMessage::_internal_has_pic_height() const {
   bool value = (_impl_._has_bits_[0] & 0x00000020u) != 0;
   return value;
 }
-inline bool ParseOCRReqMessage::has_xx4() const {
-  return _internal_has_xx4();
+inline bool ParseOCRReqMessage::has_pic_height() const {
+  return _internal_has_pic_height();
 }
-inline void ParseOCRReqMessage::clear_xx4() {
-  _impl_.xx4_ = 0u;
+inline void ParseOCRReqMessage::clear_pic_height() {
+  _impl_.pic_height_ = 0u;
   _impl_._has_bits_[0] &= ~0x00000020u;
 }
-inline uint32_t ParseOCRReqMessage::_internal_xx4() const {
-  return _impl_.xx4_;
+inline uint32_t ParseOCRReqMessage::_internal_pic_height() const {
+  return _impl_.pic_height_;
 }
-inline uint32_t ParseOCRReqMessage::xx4() const {
-  // @@protoc_insertion_point(field_get:wx4.ParseOCRReqMessage.xx4)
-  return _internal_xx4();
+inline uint32_t ParseOCRReqMessage::pic_height() const {
+  // @@protoc_insertion_point(field_get:wx4.ParseOCRReqMessage.pic_height)
+  return _internal_pic_height();
 }
-inline void ParseOCRReqMessage::_internal_set_xx4(uint32_t value) {
+inline void ParseOCRReqMessage::_internal_set_pic_height(uint32_t value) {
   _impl_._has_bits_[0] |= 0x00000020u;
-  _impl_.xx4_ = value;
+  _impl_.pic_height_ = value;
 }
-inline void ParseOCRReqMessage::set_xx4(uint32_t value) {
-  _internal_set_xx4(value);
-  // @@protoc_insertion_point(field_set:wx4.ParseOCRReqMessage.xx4)
+inline void ParseOCRReqMessage::set_pic_height(uint32_t value) {
+  _internal_set_pic_height(value);
+  // @@protoc_insertion_point(field_set:wx4.ParseOCRReqMessage.pic_height)
 }
 
 // optional bytes pic_data = 5;

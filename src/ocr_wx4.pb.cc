@@ -56,8 +56,8 @@ PROTOBUF_CONSTEXPR ParseOCRReqMessage::ParseOCRReqMessage(
   , /*decltype(_impl_.pic_data_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.rt_)*/nullptr
   , /*decltype(_impl_.task_id_)*/uint64_t{0u}
-  , /*decltype(_impl_.xx3_)*/0u
-  , /*decltype(_impl_.xx4_)*/0u} {}
+  , /*decltype(_impl_.pic_width_)*/0u
+  , /*decltype(_impl_.pic_height_)*/0u} {}
 struct ParseOCRReqMessageDefaultTypeInternal {
   PROTOBUF_CONSTEXPR ParseOCRReqMessageDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -597,10 +597,10 @@ class ParseOCRReqMessage::_Internal {
   static void set_has_pic_path(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
-  static void set_has_xx3(HasBits* has_bits) {
+  static void set_has_pic_width(HasBits* has_bits) {
     (*has_bits)[0] |= 16u;
   }
-  static void set_has_xx4(HasBits* has_bits) {
+  static void set_has_pic_height(HasBits* has_bits) {
     (*has_bits)[0] |= 32u;
   }
   static void set_has_pic_data(HasBits* has_bits) {
@@ -632,8 +632,8 @@ ParseOCRReqMessage::ParseOCRReqMessage(const ParseOCRReqMessage& from)
     , decltype(_impl_.pic_data_){}
     , decltype(_impl_.rt_){nullptr}
     , decltype(_impl_.task_id_){}
-    , decltype(_impl_.xx3_){}
-    , decltype(_impl_.xx4_){}};
+    , decltype(_impl_.pic_width_){}
+    , decltype(_impl_.pic_height_){}};
 
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   _impl_.pic_path_.InitDefault();
@@ -656,8 +656,8 @@ ParseOCRReqMessage::ParseOCRReqMessage(const ParseOCRReqMessage& from)
     _this->_impl_.rt_ = new ::wx4::ReqType(*from._impl_.rt_);
   }
   ::memcpy(&_impl_.task_id_, &from._impl_.task_id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.xx4_) -
-    reinterpret_cast<char*>(&_impl_.task_id_)) + sizeof(_impl_.xx4_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.pic_height_) -
+    reinterpret_cast<char*>(&_impl_.task_id_)) + sizeof(_impl_.pic_height_));
   // @@protoc_insertion_point(copy_constructor:wx4.ParseOCRReqMessage)
 }
 
@@ -672,8 +672,8 @@ inline void ParseOCRReqMessage::SharedCtor(
     , decltype(_impl_.pic_data_){}
     , decltype(_impl_.rt_){nullptr}
     , decltype(_impl_.task_id_){uint64_t{0u}}
-    , decltype(_impl_.xx3_){0u}
-    , decltype(_impl_.xx4_){0u}
+    , decltype(_impl_.pic_width_){0u}
+    , decltype(_impl_.pic_height_){0u}
   };
   _impl_.pic_path_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -726,8 +726,8 @@ void ParseOCRReqMessage::Clear() {
   }
   if (cached_has_bits & 0x00000038u) {
     ::memset(&_impl_.task_id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&_impl_.xx4_) -
-        reinterpret_cast<char*>(&_impl_.task_id_)) + sizeof(_impl_.xx4_));
+        reinterpret_cast<char*>(&_impl_.pic_height_) -
+        reinterpret_cast<char*>(&_impl_.task_id_)) + sizeof(_impl_.pic_height_));
   }
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<std::string>();
@@ -759,20 +759,20 @@ const char* ParseOCRReqMessage::_InternalParse(const char* ptr, ::_pbi::ParseCon
         } else
           goto handle_unusual;
         continue;
-      // optional uint32 xx3 = 3;
+      // optional uint32 pic_width = 3;
       case 3:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 24)) {
-          _Internal::set_has_xx3(&has_bits);
-          _impl_.xx3_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _Internal::set_has_pic_width(&has_bits);
+          _impl_.pic_width_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional uint32 xx4 = 4;
+      // optional uint32 pic_height = 4;
       case 4:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 32)) {
-          _Internal::set_has_xx4(&has_bits);
-          _impl_.xx4_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
+          _Internal::set_has_pic_height(&has_bits);
+          _impl_.pic_height_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint32(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -840,16 +840,16 @@ uint8_t* ParseOCRReqMessage::_InternalSerialize(
         2, this->_internal_pic_path(), target);
   }
 
-  // optional uint32 xx3 = 3;
-  if (_internal_has_xx3()) {
+  // optional uint32 pic_width = 3;
+  if (_internal_has_pic_width()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_xx3(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(3, this->_internal_pic_width(), target);
   }
 
-  // optional uint32 xx4 = 4;
-  if (_internal_has_xx4()) {
+  // optional uint32 pic_height = 4;
+  if (_internal_has_pic_height()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_xx4(), target);
+    target = ::_pbi::WireFormatLite::WriteUInt32ToArray(4, this->_internal_pic_height(), target);
   }
 
   // optional bytes pic_data = 5;
@@ -909,14 +909,14 @@ size_t ParseOCRReqMessage::ByteSizeLong() const {
       total_size += ::_pbi::WireFormatLite::UInt64SizePlusOne(this->_internal_task_id());
     }
 
-    // optional uint32 xx3 = 3;
+    // optional uint32 pic_width = 3;
     if (cached_has_bits & 0x00000010u) {
-      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_xx3());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_pic_width());
     }
 
-    // optional uint32 xx4 = 4;
+    // optional uint32 pic_height = 4;
     if (cached_has_bits & 0x00000020u) {
-      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_xx4());
+      total_size += ::_pbi::WireFormatLite::UInt32SizePlusOne(this->_internal_pic_height());
     }
 
   }
@@ -957,10 +957,10 @@ void ParseOCRReqMessage::MergeFrom(const ParseOCRReqMessage& from) {
       _this->_impl_.task_id_ = from._impl_.task_id_;
     }
     if (cached_has_bits & 0x00000010u) {
-      _this->_impl_.xx3_ = from._impl_.xx3_;
+      _this->_impl_.pic_width_ = from._impl_.pic_width_;
     }
     if (cached_has_bits & 0x00000020u) {
-      _this->_impl_.xx4_ = from._impl_.xx4_;
+      _this->_impl_.pic_height_ = from._impl_.pic_height_;
     }
     _this->_impl_._has_bits_[0] |= cached_has_bits;
   }
@@ -993,8 +993,8 @@ void ParseOCRReqMessage::InternalSwap(ParseOCRReqMessage* other) {
       &other->_impl_.pic_data_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(ParseOCRReqMessage, _impl_.xx4_)
-      + sizeof(ParseOCRReqMessage::_impl_.xx4_)
+      PROTOBUF_FIELD_OFFSET(ParseOCRReqMessage, _impl_.pic_height_)
+      + sizeof(ParseOCRReqMessage::_impl_.pic_height_)
       - PROTOBUF_FIELD_OFFSET(ParseOCRReqMessage, _impl_.rt_)>(
           reinterpret_cast<char*>(&_impl_.rt_),
           reinterpret_cast<char*>(&other->_impl_.rt_));

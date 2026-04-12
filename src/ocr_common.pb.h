@@ -681,13 +681,13 @@ class OCRResultLine final :
     kBlocksFieldNumber = 4,
     kTextFieldNumber = 2,
     kLineBoxFieldNumber = 1,
-    kBox10FieldNumber = 10,
+    kTextBlockOriginFieldNumber = 10,
     kRateFieldNumber = 3,
     kLeftFieldNumber = 5,
     kTopFieldNumber = 6,
     kRightFieldNumber = 7,
     kBottomFieldNumber = 8,
-    kUnknown0FieldNumber = 9,
+    kBoldFieldNumber = 9,
   };
   // repeated .ocr_common.OCRResultChar blocks = 4;
   int blocks_size() const;
@@ -739,23 +739,23 @@ class OCRResultLine final :
       ::ocr_common::Box* line_box);
   ::ocr_common::Box* unsafe_arena_release_line_box();
 
-  // optional .ocr_common.Box box10 = 10;
-  bool has_box10() const;
+  // optional .ocr_common.Box text_block_origin = 10;
+  bool has_text_block_origin() const;
   private:
-  bool _internal_has_box10() const;
+  bool _internal_has_text_block_origin() const;
   public:
-  void clear_box10();
-  const ::ocr_common::Box& box10() const;
-  PROTOBUF_NODISCARD ::ocr_common::Box* release_box10();
-  ::ocr_common::Box* mutable_box10();
-  void set_allocated_box10(::ocr_common::Box* box10);
+  void clear_text_block_origin();
+  const ::ocr_common::Box& text_block_origin() const;
+  PROTOBUF_NODISCARD ::ocr_common::Box* release_text_block_origin();
+  ::ocr_common::Box* mutable_text_block_origin();
+  void set_allocated_text_block_origin(::ocr_common::Box* text_block_origin);
   private:
-  const ::ocr_common::Box& _internal_box10() const;
-  ::ocr_common::Box* _internal_mutable_box10();
+  const ::ocr_common::Box& _internal_text_block_origin() const;
+  ::ocr_common::Box* _internal_mutable_text_block_origin();
   public:
-  void unsafe_arena_set_allocated_box10(
-      ::ocr_common::Box* box10);
-  ::ocr_common::Box* unsafe_arena_release_box10();
+  void unsafe_arena_set_allocated_text_block_origin(
+      ::ocr_common::Box* text_block_origin);
+  ::ocr_common::Box* unsafe_arena_release_text_block_origin();
 
   // float rate = 3;
   void clear_rate();
@@ -802,17 +802,17 @@ class OCRResultLine final :
   void _internal_set_bottom(float value);
   public:
 
-  // optional bool unknown_0 = 9;
-  bool has_unknown_0() const;
+  // optional bool bold = 9;
+  bool has_bold() const;
   private:
-  bool _internal_has_unknown_0() const;
+  bool _internal_has_bold() const;
   public:
-  void clear_unknown_0();
-  bool unknown_0() const;
-  void set_unknown_0(bool value);
+  void clear_bold();
+  bool bold() const;
+  void set_bold(bool value);
   private:
-  bool _internal_unknown_0() const;
-  void _internal_set_unknown_0(bool value);
+  bool _internal_bold() const;
+  void _internal_set_bold(bool value);
   public:
 
   // @@protoc_insertion_point(class_scope:ocr_common.OCRResultLine)
@@ -828,13 +828,13 @@ class OCRResultLine final :
     ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::ocr_common::OCRResultChar > blocks_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr text_;
     ::ocr_common::Box* line_box_;
-    ::ocr_common::Box* box10_;
+    ::ocr_common::Box* text_block_origin_;
     float rate_;
     float left_;
     float top_;
     float right_;
     float bottom_;
-    bool unknown_0_;
+    bool bold_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_ocr_5fcommon_2eproto;
@@ -1716,73 +1716,73 @@ inline void OCRResultLine::set_bottom(float value) {
   // @@protoc_insertion_point(field_set:ocr_common.OCRResultLine.bottom)
 }
 
-// optional bool unknown_0 = 9;
-inline bool OCRResultLine::_internal_has_unknown_0() const {
+// optional bool bold = 9;
+inline bool OCRResultLine::_internal_has_bold() const {
   bool value = (_impl_._has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
-inline bool OCRResultLine::has_unknown_0() const {
-  return _internal_has_unknown_0();
+inline bool OCRResultLine::has_bold() const {
+  return _internal_has_bold();
 }
-inline void OCRResultLine::clear_unknown_0() {
-  _impl_.unknown_0_ = false;
+inline void OCRResultLine::clear_bold() {
+  _impl_.bold_ = false;
   _impl_._has_bits_[0] &= ~0x00000002u;
 }
-inline bool OCRResultLine::_internal_unknown_0() const {
-  return _impl_.unknown_0_;
+inline bool OCRResultLine::_internal_bold() const {
+  return _impl_.bold_;
 }
-inline bool OCRResultLine::unknown_0() const {
-  // @@protoc_insertion_point(field_get:ocr_common.OCRResultLine.unknown_0)
-  return _internal_unknown_0();
+inline bool OCRResultLine::bold() const {
+  // @@protoc_insertion_point(field_get:ocr_common.OCRResultLine.bold)
+  return _internal_bold();
 }
-inline void OCRResultLine::_internal_set_unknown_0(bool value) {
+inline void OCRResultLine::_internal_set_bold(bool value) {
   _impl_._has_bits_[0] |= 0x00000002u;
-  _impl_.unknown_0_ = value;
+  _impl_.bold_ = value;
 }
-inline void OCRResultLine::set_unknown_0(bool value) {
-  _internal_set_unknown_0(value);
-  // @@protoc_insertion_point(field_set:ocr_common.OCRResultLine.unknown_0)
+inline void OCRResultLine::set_bold(bool value) {
+  _internal_set_bold(value);
+  // @@protoc_insertion_point(field_set:ocr_common.OCRResultLine.bold)
 }
 
-// optional .ocr_common.Box box10 = 10;
-inline bool OCRResultLine::_internal_has_box10() const {
+// optional .ocr_common.Box text_block_origin = 10;
+inline bool OCRResultLine::_internal_has_text_block_origin() const {
   bool value = (_impl_._has_bits_[0] & 0x00000001u) != 0;
-  PROTOBUF_ASSUME(!value || _impl_.box10_ != nullptr);
+  PROTOBUF_ASSUME(!value || _impl_.text_block_origin_ != nullptr);
   return value;
 }
-inline bool OCRResultLine::has_box10() const {
-  return _internal_has_box10();
+inline bool OCRResultLine::has_text_block_origin() const {
+  return _internal_has_text_block_origin();
 }
-inline void OCRResultLine::clear_box10() {
-  if (_impl_.box10_ != nullptr) _impl_.box10_->Clear();
+inline void OCRResultLine::clear_text_block_origin() {
+  if (_impl_.text_block_origin_ != nullptr) _impl_.text_block_origin_->Clear();
   _impl_._has_bits_[0] &= ~0x00000001u;
 }
-inline const ::ocr_common::Box& OCRResultLine::_internal_box10() const {
-  const ::ocr_common::Box* p = _impl_.box10_;
+inline const ::ocr_common::Box& OCRResultLine::_internal_text_block_origin() const {
+  const ::ocr_common::Box* p = _impl_.text_block_origin_;
   return p != nullptr ? *p : reinterpret_cast<const ::ocr_common::Box&>(
       ::ocr_common::_Box_default_instance_);
 }
-inline const ::ocr_common::Box& OCRResultLine::box10() const {
-  // @@protoc_insertion_point(field_get:ocr_common.OCRResultLine.box10)
-  return _internal_box10();
+inline const ::ocr_common::Box& OCRResultLine::text_block_origin() const {
+  // @@protoc_insertion_point(field_get:ocr_common.OCRResultLine.text_block_origin)
+  return _internal_text_block_origin();
 }
-inline void OCRResultLine::unsafe_arena_set_allocated_box10(
-    ::ocr_common::Box* box10) {
+inline void OCRResultLine::unsafe_arena_set_allocated_text_block_origin(
+    ::ocr_common::Box* text_block_origin) {
   if (GetArenaForAllocation() == nullptr) {
-    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.box10_);
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(_impl_.text_block_origin_);
   }
-  _impl_.box10_ = box10;
-  if (box10) {
+  _impl_.text_block_origin_ = text_block_origin;
+  if (text_block_origin) {
     _impl_._has_bits_[0] |= 0x00000001u;
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ocr_common.OCRResultLine.box10)
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:ocr_common.OCRResultLine.text_block_origin)
 }
-inline ::ocr_common::Box* OCRResultLine::release_box10() {
+inline ::ocr_common::Box* OCRResultLine::release_text_block_origin() {
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::ocr_common::Box* temp = _impl_.box10_;
-  _impl_.box10_ = nullptr;
+  ::ocr_common::Box* temp = _impl_.text_block_origin_;
+  _impl_.text_block_origin_ = nullptr;
 #ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
   auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
   temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
@@ -1794,44 +1794,44 @@ inline ::ocr_common::Box* OCRResultLine::release_box10() {
 #endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
   return temp;
 }
-inline ::ocr_common::Box* OCRResultLine::unsafe_arena_release_box10() {
-  // @@protoc_insertion_point(field_release:ocr_common.OCRResultLine.box10)
+inline ::ocr_common::Box* OCRResultLine::unsafe_arena_release_text_block_origin() {
+  // @@protoc_insertion_point(field_release:ocr_common.OCRResultLine.text_block_origin)
   _impl_._has_bits_[0] &= ~0x00000001u;
-  ::ocr_common::Box* temp = _impl_.box10_;
-  _impl_.box10_ = nullptr;
+  ::ocr_common::Box* temp = _impl_.text_block_origin_;
+  _impl_.text_block_origin_ = nullptr;
   return temp;
 }
-inline ::ocr_common::Box* OCRResultLine::_internal_mutable_box10() {
+inline ::ocr_common::Box* OCRResultLine::_internal_mutable_text_block_origin() {
   _impl_._has_bits_[0] |= 0x00000001u;
-  if (_impl_.box10_ == nullptr) {
+  if (_impl_.text_block_origin_ == nullptr) {
     auto* p = CreateMaybeMessage<::ocr_common::Box>(GetArenaForAllocation());
-    _impl_.box10_ = p;
+    _impl_.text_block_origin_ = p;
   }
-  return _impl_.box10_;
+  return _impl_.text_block_origin_;
 }
-inline ::ocr_common::Box* OCRResultLine::mutable_box10() {
-  ::ocr_common::Box* _msg = _internal_mutable_box10();
-  // @@protoc_insertion_point(field_mutable:ocr_common.OCRResultLine.box10)
+inline ::ocr_common::Box* OCRResultLine::mutable_text_block_origin() {
+  ::ocr_common::Box* _msg = _internal_mutable_text_block_origin();
+  // @@protoc_insertion_point(field_mutable:ocr_common.OCRResultLine.text_block_origin)
   return _msg;
 }
-inline void OCRResultLine::set_allocated_box10(::ocr_common::Box* box10) {
+inline void OCRResultLine::set_allocated_text_block_origin(::ocr_common::Box* text_block_origin) {
   ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
   if (message_arena == nullptr) {
-    delete _impl_.box10_;
+    delete _impl_.text_block_origin_;
   }
-  if (box10) {
+  if (text_block_origin) {
     ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
-        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(box10);
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(text_block_origin);
     if (message_arena != submessage_arena) {
-      box10 = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
-          message_arena, box10, submessage_arena);
+      text_block_origin = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, text_block_origin, submessage_arena);
     }
     _impl_._has_bits_[0] |= 0x00000001u;
   } else {
     _impl_._has_bits_[0] &= ~0x00000001u;
   }
-  _impl_.box10_ = box10;
-  // @@protoc_insertion_point(field_set_allocated:ocr_common.OCRResultLine.box10)
+  _impl_.text_block_origin_ = text_block_origin;
+  // @@protoc_insertion_point(field_set_allocated:ocr_common.OCRResultLine.text_block_origin)
 }
 
 #ifdef __GNUC__

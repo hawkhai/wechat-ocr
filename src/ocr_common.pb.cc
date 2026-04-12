@@ -72,13 +72,13 @@ PROTOBUF_CONSTEXPR OCRResultLine::OCRResultLine(
   , /*decltype(_impl_.blocks_)*/{}
   , /*decltype(_impl_.text_)*/{&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{}}
   , /*decltype(_impl_.line_box_)*/nullptr
-  , /*decltype(_impl_.box10_)*/nullptr
+  , /*decltype(_impl_.text_block_origin_)*/nullptr
   , /*decltype(_impl_.rate_)*/0
   , /*decltype(_impl_.left_)*/0
   , /*decltype(_impl_.top_)*/0
   , /*decltype(_impl_.right_)*/0
   , /*decltype(_impl_.bottom_)*/0
-  , /*decltype(_impl_.unknown_0_)*/false} {}
+  , /*decltype(_impl_.bold_)*/false} {}
 struct OCRResultLineDefaultTypeInternal {
   PROTOBUF_CONSTEXPR OCRResultLineDefaultTypeInternal()
       : _instance(::_pbi::ConstantInitialized{}) {}
@@ -957,11 +957,11 @@ class OCRResultLine::_Internal {
  public:
   using HasBits = decltype(std::declval<OCRResultLine>()._impl_._has_bits_);
   static const ::ocr_common::Box& line_box(const OCRResultLine* msg);
-  static void set_has_unknown_0(HasBits* has_bits) {
+  static void set_has_bold(HasBits* has_bits) {
     (*has_bits)[0] |= 2u;
   }
-  static const ::ocr_common::Box& box10(const OCRResultLine* msg);
-  static void set_has_box10(HasBits* has_bits) {
+  static const ::ocr_common::Box& text_block_origin(const OCRResultLine* msg);
+  static void set_has_text_block_origin(HasBits* has_bits) {
     (*has_bits)[0] |= 1u;
   }
 };
@@ -971,8 +971,8 @@ OCRResultLine::_Internal::line_box(const OCRResultLine* msg) {
   return *msg->_impl_.line_box_;
 }
 const ::ocr_common::Box&
-OCRResultLine::_Internal::box10(const OCRResultLine* msg) {
-  return *msg->_impl_.box10_;
+OCRResultLine::_Internal::text_block_origin(const OCRResultLine* msg) {
+  return *msg->_impl_.text_block_origin_;
 }
 OCRResultLine::OCRResultLine(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
@@ -989,13 +989,13 @@ OCRResultLine::OCRResultLine(const OCRResultLine& from)
     , decltype(_impl_.blocks_){from._impl_.blocks_}
     , decltype(_impl_.text_){}
     , decltype(_impl_.line_box_){nullptr}
-    , decltype(_impl_.box10_){nullptr}
+    , decltype(_impl_.text_block_origin_){nullptr}
     , decltype(_impl_.rate_){}
     , decltype(_impl_.left_){}
     , decltype(_impl_.top_){}
     , decltype(_impl_.right_){}
     , decltype(_impl_.bottom_){}
-    , decltype(_impl_.unknown_0_){}};
+    , decltype(_impl_.bold_){}};
 
   _internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
   _impl_.text_.InitDefault();
@@ -1009,12 +1009,12 @@ OCRResultLine::OCRResultLine(const OCRResultLine& from)
   if (from._internal_has_line_box()) {
     _this->_impl_.line_box_ = new ::ocr_common::Box(*from._impl_.line_box_);
   }
-  if (from._internal_has_box10()) {
-    _this->_impl_.box10_ = new ::ocr_common::Box(*from._impl_.box10_);
+  if (from._internal_has_text_block_origin()) {
+    _this->_impl_.text_block_origin_ = new ::ocr_common::Box(*from._impl_.text_block_origin_);
   }
   ::memcpy(&_impl_.rate_, &from._impl_.rate_,
-    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.unknown_0_) -
-    reinterpret_cast<char*>(&_impl_.rate_)) + sizeof(_impl_.unknown_0_));
+    static_cast<size_t>(reinterpret_cast<char*>(&_impl_.bold_) -
+    reinterpret_cast<char*>(&_impl_.rate_)) + sizeof(_impl_.bold_));
   // @@protoc_insertion_point(copy_constructor:ocr_common.OCRResultLine)
 }
 
@@ -1028,13 +1028,13 @@ inline void OCRResultLine::SharedCtor(
     , decltype(_impl_.blocks_){arena}
     , decltype(_impl_.text_){}
     , decltype(_impl_.line_box_){nullptr}
-    , decltype(_impl_.box10_){nullptr}
+    , decltype(_impl_.text_block_origin_){nullptr}
     , decltype(_impl_.rate_){0}
     , decltype(_impl_.left_){0}
     , decltype(_impl_.top_){0}
     , decltype(_impl_.right_){0}
     , decltype(_impl_.bottom_){0}
-    , decltype(_impl_.unknown_0_){false}
+    , decltype(_impl_.bold_){false}
   };
   _impl_.text_.InitDefault();
   #ifdef PROTOBUF_FORCE_COPY_DEFAULT_STRING
@@ -1056,7 +1056,7 @@ inline void OCRResultLine::SharedDtor() {
   _impl_.blocks_.~RepeatedPtrField();
   _impl_.text_.Destroy();
   if (this != internal_default_instance()) delete _impl_.line_box_;
-  if (this != internal_default_instance()) delete _impl_.box10_;
+  if (this != internal_default_instance()) delete _impl_.text_block_origin_;
 }
 
 void OCRResultLine::SetCachedSize(int size) const {
@@ -1077,13 +1077,13 @@ void OCRResultLine::Clear() {
   _impl_.line_box_ = nullptr;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(_impl_.box10_ != nullptr);
-    _impl_.box10_->Clear();
+    GOOGLE_DCHECK(_impl_.text_block_origin_ != nullptr);
+    _impl_.text_block_origin_->Clear();
   }
   ::memset(&_impl_.rate_, 0, static_cast<size_t>(
       reinterpret_cast<char*>(&_impl_.bottom_) -
       reinterpret_cast<char*>(&_impl_.rate_)) + sizeof(_impl_.bottom_));
-  _impl_.unknown_0_ = false;
+  _impl_.bold_ = false;
   _impl_._has_bits_.Clear();
   _internal_metadata_.Clear<std::string>();
 }
@@ -1166,19 +1166,19 @@ const char* OCRResultLine::_InternalParse(const char* ptr, ::_pbi::ParseContext*
         } else
           goto handle_unusual;
         continue;
-      // optional bool unknown_0 = 9;
+      // optional bool bold = 9;
       case 9:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 72)) {
-          _Internal::set_has_unknown_0(&has_bits);
-          _impl_.unknown_0_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          _Internal::set_has_bold(&has_bits);
+          _impl_.bold_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
         continue;
-      // optional .ocr_common.Box box10 = 10;
+      // optional .ocr_common.Box text_block_origin = 10;
       case 10:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 82)) {
-          ptr = ctx->ParseMessage(_internal_mutable_box10(), ptr);
+          ptr = ctx->ParseMessage(_internal_mutable_text_block_origin(), ptr);
           CHK_(ptr);
         } else
           goto handle_unusual;
@@ -1288,17 +1288,17 @@ uint8_t* OCRResultLine::_InternalSerialize(
     target = ::_pbi::WireFormatLite::WriteFloatToArray(8, this->_internal_bottom(), target);
   }
 
-  // optional bool unknown_0 = 9;
-  if (_internal_has_unknown_0()) {
+  // optional bool bold = 9;
+  if (_internal_has_bold()) {
     target = stream->EnsureSpace(target);
-    target = ::_pbi::WireFormatLite::WriteBoolToArray(9, this->_internal_unknown_0(), target);
+    target = ::_pbi::WireFormatLite::WriteBoolToArray(9, this->_internal_bold(), target);
   }
 
-  // optional .ocr_common.Box box10 = 10;
-  if (_internal_has_box10()) {
+  // optional .ocr_common.Box text_block_origin = 10;
+  if (_internal_has_text_block_origin()) {
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
-      InternalWriteMessage(10, _Internal::box10(this),
-        _Internal::box10(this).GetCachedSize(), target, stream);
+      InternalWriteMessage(10, _Internal::text_block_origin(this),
+        _Internal::text_block_origin(this).GetCachedSize(), target, stream);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -1338,12 +1338,12 @@ size_t OCRResultLine::ByteSizeLong() const {
         *_impl_.line_box_);
   }
 
-  // optional .ocr_common.Box box10 = 10;
+  // optional .ocr_common.Box text_block_origin = 10;
   cached_has_bits = _impl_._has_bits_[0];
   if (cached_has_bits & 0x00000001u) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(
-        *_impl_.box10_);
+        *_impl_.text_block_origin_);
   }
 
   // float rate = 3;
@@ -1391,7 +1391,7 @@ size_t OCRResultLine::ByteSizeLong() const {
     total_size += 1 + 4;
   }
 
-  // optional bool unknown_0 = 9;
+  // optional bool bold = 9;
   if (cached_has_bits & 0x00000002u) {
     total_size += 1 + 1;
   }
@@ -1425,9 +1425,9 @@ void OCRResultLine::MergeFrom(const OCRResultLine& from) {
     _this->_internal_mutable_line_box()->::ocr_common::Box::MergeFrom(
         from._internal_line_box());
   }
-  if (from._internal_has_box10()) {
-    _this->_internal_mutable_box10()->::ocr_common::Box::MergeFrom(
-        from._internal_box10());
+  if (from._internal_has_text_block_origin()) {
+    _this->_internal_mutable_text_block_origin()->::ocr_common::Box::MergeFrom(
+        from._internal_text_block_origin());
   }
   static_assert(sizeof(uint32_t) == sizeof(float), "Code assumes uint32_t and float are the same size.");
   float tmp_rate = from._internal_rate();
@@ -1464,8 +1464,8 @@ void OCRResultLine::MergeFrom(const OCRResultLine& from) {
   if (raw_bottom != 0) {
     _this->_internal_set_bottom(from._internal_bottom());
   }
-  if (from._internal_has_unknown_0()) {
-    _this->_internal_set_unknown_0(from._internal_unknown_0());
+  if (from._internal_has_bold()) {
+    _this->_internal_set_bold(from._internal_bold());
   }
   _this->_internal_metadata_.MergeFrom<std::string>(from._internal_metadata_);
 }
@@ -1493,8 +1493,8 @@ void OCRResultLine::InternalSwap(OCRResultLine* other) {
       &other->_impl_.text_, rhs_arena
   );
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(OCRResultLine, _impl_.unknown_0_)
-      + sizeof(OCRResultLine::_impl_.unknown_0_)
+      PROTOBUF_FIELD_OFFSET(OCRResultLine, _impl_.bold_)
+      + sizeof(OCRResultLine::_impl_.bold_)
       - PROTOBUF_FIELD_OFFSET(OCRResultLine, _impl_.line_box_)>(
           reinterpret_cast<char*>(&_impl_.line_box_),
           reinterpret_cast<char*>(&other->_impl_.line_box_));

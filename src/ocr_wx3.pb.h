@@ -171,8 +171,8 @@ class OcrInputBuffer final :
   enum : int {
     kPicPathFieldNumber = 1,
     kPicDataFieldNumber = 4,
-    kU2FieldNumber = 2,
-    kU3FieldNumber = 3,
+    kPicWidthFieldNumber = 2,
+    kPicHeightFieldNumber = 3,
   };
   // optional string pic_path = 1;
   bool has_pic_path() const;
@@ -210,30 +210,30 @@ class OcrInputBuffer final :
   std::string* _internal_mutable_pic_data();
   public:
 
-  // optional uint32 u2 = 2;
-  bool has_u2() const;
+  // optional uint32 pic_width = 2;
+  bool has_pic_width() const;
   private:
-  bool _internal_has_u2() const;
+  bool _internal_has_pic_width() const;
   public:
-  void clear_u2();
-  uint32_t u2() const;
-  void set_u2(uint32_t value);
+  void clear_pic_width();
+  uint32_t pic_width() const;
+  void set_pic_width(uint32_t value);
   private:
-  uint32_t _internal_u2() const;
-  void _internal_set_u2(uint32_t value);
+  uint32_t _internal_pic_width() const;
+  void _internal_set_pic_width(uint32_t value);
   public:
 
-  // optional uint32 u3 = 3;
-  bool has_u3() const;
+  // optional uint32 pic_height = 3;
+  bool has_pic_height() const;
   private:
-  bool _internal_has_u3() const;
+  bool _internal_has_pic_height() const;
   public:
-  void clear_u3();
-  uint32_t u3() const;
-  void set_u3(uint32_t value);
+  void clear_pic_height();
+  uint32_t pic_height() const;
+  void set_pic_height(uint32_t value);
   private:
-  uint32_t _internal_u3() const;
-  void _internal_set_u3(uint32_t value);
+  uint32_t _internal_pic_height() const;
+  void _internal_set_pic_height(uint32_t value);
   public:
 
   // @@protoc_insertion_point(class_scope:wx3.OcrInputBuffer)
@@ -248,8 +248,8 @@ class OcrInputBuffer final :
     mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr pic_path_;
     ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr pic_data_;
-    uint32_t u2_;
-    uint32_t u3_;
+    uint32_t pic_width_;
+    uint32_t pic_height_;
   };
   union { Impl_ _impl_; };
   friend struct ::TableStruct_ocr_5fwx3_2eproto;
@@ -869,60 +869,60 @@ inline void OcrInputBuffer::set_allocated_pic_path(std::string* pic_path) {
   // @@protoc_insertion_point(field_set_allocated:wx3.OcrInputBuffer.pic_path)
 }
 
-// optional uint32 u2 = 2;
-inline bool OcrInputBuffer::_internal_has_u2() const {
+// optional uint32 pic_width = 2;
+inline bool OcrInputBuffer::_internal_has_pic_width() const {
   bool value = (_impl_._has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
-inline bool OcrInputBuffer::has_u2() const {
-  return _internal_has_u2();
+inline bool OcrInputBuffer::has_pic_width() const {
+  return _internal_has_pic_width();
 }
-inline void OcrInputBuffer::clear_u2() {
-  _impl_.u2_ = 0u;
+inline void OcrInputBuffer::clear_pic_width() {
+  _impl_.pic_width_ = 0u;
   _impl_._has_bits_[0] &= ~0x00000004u;
 }
-inline uint32_t OcrInputBuffer::_internal_u2() const {
-  return _impl_.u2_;
+inline uint32_t OcrInputBuffer::_internal_pic_width() const {
+  return _impl_.pic_width_;
 }
-inline uint32_t OcrInputBuffer::u2() const {
-  // @@protoc_insertion_point(field_get:wx3.OcrInputBuffer.u2)
-  return _internal_u2();
+inline uint32_t OcrInputBuffer::pic_width() const {
+  // @@protoc_insertion_point(field_get:wx3.OcrInputBuffer.pic_width)
+  return _internal_pic_width();
 }
-inline void OcrInputBuffer::_internal_set_u2(uint32_t value) {
+inline void OcrInputBuffer::_internal_set_pic_width(uint32_t value) {
   _impl_._has_bits_[0] |= 0x00000004u;
-  _impl_.u2_ = value;
+  _impl_.pic_width_ = value;
 }
-inline void OcrInputBuffer::set_u2(uint32_t value) {
-  _internal_set_u2(value);
-  // @@protoc_insertion_point(field_set:wx3.OcrInputBuffer.u2)
+inline void OcrInputBuffer::set_pic_width(uint32_t value) {
+  _internal_set_pic_width(value);
+  // @@protoc_insertion_point(field_set:wx3.OcrInputBuffer.pic_width)
 }
 
-// optional uint32 u3 = 3;
-inline bool OcrInputBuffer::_internal_has_u3() const {
+// optional uint32 pic_height = 3;
+inline bool OcrInputBuffer::_internal_has_pic_height() const {
   bool value = (_impl_._has_bits_[0] & 0x00000008u) != 0;
   return value;
 }
-inline bool OcrInputBuffer::has_u3() const {
-  return _internal_has_u3();
+inline bool OcrInputBuffer::has_pic_height() const {
+  return _internal_has_pic_height();
 }
-inline void OcrInputBuffer::clear_u3() {
-  _impl_.u3_ = 0u;
+inline void OcrInputBuffer::clear_pic_height() {
+  _impl_.pic_height_ = 0u;
   _impl_._has_bits_[0] &= ~0x00000008u;
 }
-inline uint32_t OcrInputBuffer::_internal_u3() const {
-  return _impl_.u3_;
+inline uint32_t OcrInputBuffer::_internal_pic_height() const {
+  return _impl_.pic_height_;
 }
-inline uint32_t OcrInputBuffer::u3() const {
-  // @@protoc_insertion_point(field_get:wx3.OcrInputBuffer.u3)
-  return _internal_u3();
+inline uint32_t OcrInputBuffer::pic_height() const {
+  // @@protoc_insertion_point(field_get:wx3.OcrInputBuffer.pic_height)
+  return _internal_pic_height();
 }
-inline void OcrInputBuffer::_internal_set_u3(uint32_t value) {
+inline void OcrInputBuffer::_internal_set_pic_height(uint32_t value) {
   _impl_._has_bits_[0] |= 0x00000008u;
-  _impl_.u3_ = value;
+  _impl_.pic_height_ = value;
 }
-inline void OcrInputBuffer::set_u3(uint32_t value) {
-  _internal_set_u3(value);
-  // @@protoc_insertion_point(field_set:wx3.OcrInputBuffer.u3)
+inline void OcrInputBuffer::set_pic_height(uint32_t value) {
+  _internal_set_pic_height(value);
+  // @@protoc_insertion_point(field_set:wx3.OcrInputBuffer.pic_height)
 }
 
 // optional bytes pic_data = 4;
