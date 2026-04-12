@@ -1,5 +1,5 @@
 import wcocr
-import os
+import os, json
 
 if os.name == 'nt':
     wechat_path = r"D:\Program Files\Tencent\Weixin\4.1.7.59"
@@ -10,4 +10,4 @@ else:
 
 wcocr.init(wechatocr_path, wechat_path)
 result = wcocr.ocr("test.png")
-print(result)
+print(json.dumps(result, ensure_ascii=False, indent=2))

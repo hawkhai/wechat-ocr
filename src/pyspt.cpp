@@ -109,6 +109,31 @@ static PyObject* py_ocr(PyObject* self, PyObject* args) {
 			PyDict_SetItemString(tmpo2, "text_block_origin", tmpo3);
 			Py_DECREF(tmpo3);
 		}
+		if (!kv.details.empty()) {
+			tmpo3 = PyList_New(kv.details.size());
+			for (size_t j = 0; j < kv.details.size(); ++j) {
+				auto& ch = kv.details[j];
+				PyObject* chdict = PyDict_New();
+				PyObject* v = PyUnicode_FromString(ch.chars.c_str());
+				PyDict_SetItemString(chdict, "chars", v);
+				Py_DECREF(v);
+				v = PyFloat_FromDouble(ch.left);
+				PyDict_SetItemString(chdict, "left", v);
+				Py_DECREF(v);
+				v = PyFloat_FromDouble(ch.top);
+				PyDict_SetItemString(chdict, "top", v);
+				Py_DECREF(v);
+				v = PyFloat_FromDouble(ch.right);
+				PyDict_SetItemString(chdict, "right", v);
+				Py_DECREF(v);
+				v = PyFloat_FromDouble(ch.bottom);
+				PyDict_SetItemString(chdict, "bottom", v);
+				Py_DECREF(v);
+				PyList_SetItem(tmpo3, j, chdict);
+			}
+			PyDict_SetItemString(tmpo2, "details", tmpo3);
+			Py_DECREF(tmpo3);
+		}
 		PyList_SetItem(tmpo, idx++, tmpo2);
 		// Py_DECREF(tmpo2); // note: no need to decref tmpo2, PyList_SetItem already steals the reference.
 	}
