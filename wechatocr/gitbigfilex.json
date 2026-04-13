@@ -16,7 +16,12 @@
   "mainfile": "gitbigfilex.json",
   "others": [
     "wechat",
-    "wechatocr"
+    "wechatocr",
+    "wcocr.cp37-win_amd64.pyd",
+    "wcocr_serv.py",
+    "wcocr_serv.bat",
+    "test.png",
+    "test.py"
   ],
   "submit_dir": "26041223043d5621d85f36c38a72953d",
   "timeout": 365,
@@ -25,8 +30,13 @@
   "timeout_reserved_note": "不会清理最新的 20 个文件夹（保底保留文件夹个数）。",
   "upload": {
     "comment": "这个节点是程序自动维护的，不要修改。上面的 'others' 字段支持配置文件夹。",
-    "count": 40,
+    "count": 45,
     "others": [
+      "test.png",
+      "test.py",
+      "wcocr.cp37-win_amd64.pyd",
+      "wcocr_serv.bat",
+      "wcocr_serv.py",
       "wechat\\4.1.7.59\\backup_drivers.bin",
       "wechat\\4.1.7.59\\ConfSdk.dll",
       "wechat\\4.1.7.59\\crashpad_handler.exe",

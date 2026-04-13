@@ -1,4 +1,9 @@
-"gitbigfilex.json" d22b5a3f8bf059ef86248ad182e0e11c 2952
+"gitbigfilex.json" ab455334b6f08654dc81668866d6f222 3184
+"test.png" c2e72ea955a50f25e47af74e21380521 6731
+"test.py" d71eec8522fef8ac84e8cff98a101d2b 1506
+"wcocr.cp37-win_amd64.pyd" 6e58cc91744999fa3a973691e724975d 166400
+"wcocr_serv.bat" 367a788817dc32c17381ba038365316e 55
+"wcocr_serv.py" 94749a12b94bf3364f9671828928fe98 4302
 "wechat\4.1.7.59\backup_drivers.bin" e7a21e03a90623ebc82f62634601bb63 519877
 "wechat\4.1.7.59\ConfSdk.dll" bcd1deec0b9d4507ff934850662cd22e 1123368
 "wechat\4.1.7.59\crashpad_handler.exe" be9d6d58ef428964b9478e1ece18c637 2174512
