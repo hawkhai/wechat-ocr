@@ -4,6 +4,7 @@
   "filemd5_cachesize": 5000,
   "generate_listfile": true,
   "generate_versionfile": true,
+  "gitcheck": true,
   "gitremote": "wechatocr_v4",
   "gitremote_note": "远程根目录 'wechatocr_v4'。",
   "ignorelist": [

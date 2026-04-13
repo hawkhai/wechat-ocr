@@ -1,4 +1,4 @@
-"gitbigfilex.json" 74d91f9b88415010c9175fc8232148e6 2931
+"gitbigfilex.json" d22b5a3f8bf059ef86248ad182e0e11c 2952
 "wechat\4.1.7.59\backup_drivers.bin" e7a21e03a90623ebc82f62634601bb63 519877
 "wechat\4.1.7.59\ConfSdk.dll" bcd1deec0b9d4507ff934850662cd22e 1123368
 "wechat\4.1.7.59\crashpad_handler.exe" be9d6d58ef428964b9478e1ece18c637 2174512
