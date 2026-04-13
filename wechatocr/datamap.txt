@@ -1,4 +1,4 @@
-"gitbigfilex.json" 5957873bbefc8e2bfb3450f760f8d31c 3324
+"gitbigfilex.json" ab684bf5a5f405028891b1c9f21781a6 3326
 "test.png" c2e72ea955a50f25e47af74e21380521 6731
 "test.py" d71eec8522fef8ac84e8cff98a101d2b 1506
 "wcocr.cp311-win_amd64.pyd" 4497e308b7cc5da5a292fcf7b8c5f7cf 165888
@@ -32,6 +32,7 @@
 "wechat\4.1.7.59\WetypeInstaller.exe" 7654d5363fd62c266b2bc477b5d86062 2855520
 "wechat\4.1.7.59\XEditor.bin" e35fbfd55143007c4fd763eb557ab0b3 22710378
 "wechat\4.1.7.59\XNet.dll" 5e4803c3529b96cda263b79179e9bae7 6340208
+"wechat\Weixin.exe" 43e641a1e85052ed36cfeb3c8a794054 3130408
 "wechatocr\8082\extracted\charset_zh13562.txt" b55e7a03bb0dfcfd8607cf361bc89e5e 54258
 "wechatocr\8082\extracted\DeepSR_REPSR_R_M4C16_Flip_ep24.xnet" 3c8f11a91f4775ce8c5a21ecb382e1ae 45388
 "wechatocr\8082\extracted\file_component.xml" 0aaf0bc6f5c8cbf5f26a1f5bd41c706b 1571

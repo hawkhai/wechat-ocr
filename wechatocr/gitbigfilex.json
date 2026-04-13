@@ -10,7 +10,6 @@
   "ignorelist": [
     "wechat\\debug.log",
     "wechat\\Uninstall.exe",
-    "wechat\\Weixin.exe",
     "wechat\\微信.lnk"
   ],
   "mainfile": "gitbigfilex.json",
@@ -32,7 +31,7 @@
   "timeout_reserved_note": "不会清理最新的 20 个文件夹（保底保留文件夹个数）。",
   "upload": {
     "comment": "这个节点是程序自动维护的，不要修改。上面的 'others' 字段支持配置文件夹。",
-    "count": 47,
+    "count": 48,
     "others": [
       "test.png",
       "test.py",
@@ -67,6 +66,7 @@
       "wechat\\4.1.7.59\\WetypeInstaller.exe",
       "wechat\\4.1.7.59\\XEditor.bin",
       "wechat\\4.1.7.59\\XNet.dll",
+      "wechat\\Weixin.exe",
       "wechatocr\\8082\\extracted\\charset_zh13562.txt",
       "wechatocr\\8082\\extracted\\DeepSR_REPSR_R_M4C16_Flip_ep24.xnet",
       "wechatocr\\8082\\extracted\\file_component.xml",
