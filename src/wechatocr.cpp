@@ -105,7 +105,7 @@ bool CWeChatOCR::doOCR(crefstr imgpath0, result_t* res)
 	do {
 		std::wstring wtmp;
 		wtmp.resize(imgpath0.length() + 2);
-		DWORD cp = is_text_utf8(imgpath0.c_str(), imgpath0.length()) ? CP_UTF8 : CP_ACP;
+		DWORD cp = CP_UTF8;//is_text_utf8(imgpath0.c_str(), imgpath0.length()) ? CP_UTF8 : CP_ACP;
 		int len = MultiByteToWideChar(cp, 0, imgpath0.c_str(), (int)imgpath0.length(), &wtmp[0], (int)wtmp.size());
 		wtmp.resize(len > 0 ? len : 0);
 		auto patho = std::filesystem::weakly_canonical(wtmp);
