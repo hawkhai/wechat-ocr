@@ -1,13 +1,15 @@
+#encoding=utf8
 import wcocr
 import os, json, sys, tempfile, base64
 from http.server import HTTPServer, BaseHTTPRequestHandler
+import traceback
 
 # 以当前脚本所在目录为基准路径
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 if os.name == 'nt':
-    wechat_path = os.path.join(SCRIPT_DIR, r"..\wechatocr\wechat\4.1.7.59")
-    wechatocr_path = os.path.join(SCRIPT_DIR, r"..\wechatocr\wechatocr\8082\extracted\wxocr.dll")
+    wechat_path = os.path.join(SCRIPT_DIR, r"wechat\4.1.7.59")
+    wechatocr_path = os.path.join(SCRIPT_DIR, r"wechatocr\8082\extracted\wxocr.dll")
 else:
     wechat_path = "/opt/wechat"
     wechatocr_path = "/opt/wechat/wxocr"
@@ -55,6 +57,7 @@ class OCRHandler(BaseHTTPRequestHandler):
             body = self.rfile.read(content_length)
             req = json.loads(body.decode("utf-8")) if body else {}
         except Exception as e:
+            traceback.print_exc()
             self._send_json(400, {"ok": False, "error": f"Invalid JSON: {e}"})
             return
 
@@ -82,6 +85,7 @@ class OCRHandler(BaseHTTPRequestHandler):
             self._send_json(200, {"ok": True, "result": result})
 
         except Exception as e:
+            traceback.print_exc()
             self._send_json(500, {"ok": False, "error": str(e)})
         finally:
             if tmp_path and os.path.exists(tmp_path):
