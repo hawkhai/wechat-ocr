@@ -41,7 +41,7 @@ int main(int argc, char* argv[])
 
 	string msg;
 	CGotOCR ocr(util::to_tstr(argv[1]).c_str(), util::to_tstr(argv[2]).c_str());
-	if (!ocr.wait_connection(5000)) {
+	if (!ocr.wait_connection(3000)) {
 		fprintf(stderr, "wechat_ocr.wait_connection failed\n");
 		return -1;
 	}
@@ -83,7 +83,7 @@ HRESULT DllRegisterServer(void)
 	string msg;
 
 	CWeChatOCR wechat_ocr(_wgetenv(L"WECHATOCR_EXE"), _wgetenv(L"WECHAT_DIR"));
-	if (!wechat_ocr.wait_connection(5000)) {
+	if (!wechat_ocr.wait_connection(3000)) {
 		fprintf(stderr, "wechat_ocr.wait_connection failed\n");
 		return E_FAIL;
 	}

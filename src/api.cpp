@@ -34,7 +34,7 @@ bool wechat_ocr(LPCTSTR ocr_exe, LPCTSTR wechat_dir, const char * imgfn, void(*s
 		if (!ocr_exe || !wechat_dir || !*ocr_exe || !*wechat_dir)
 			return false;
 		auto ocr = std::make_unique<CWeChatOCR>(ocr_exe, wechat_dir);
-		if (!ocr->wait_connection(5000)) {
+		if (!ocr->wait_connection(3000)) {
 			return false;
 		}
 		g_instance = std::move(ocr);

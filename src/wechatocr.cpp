@@ -91,7 +91,7 @@ CWeChatOCR::CWeChatOCR(LPCTSTR exe0, LPCTSTR wcdir0)
 #define OCR_MAX_TASK_ID INT_MAX
 bool CWeChatOCR::doOCR(crefstr imgpath0, result_t* res)
 {
-	if (!wait_connection(2000))
+	if (!wait_connection(3000))
 		return false;
 
 	// wx4 中，图片路径必须是绝对路径，否则会失败

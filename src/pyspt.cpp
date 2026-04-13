@@ -14,7 +14,7 @@ static PyObject* py_init(PyObject* self, PyObject* args)
 		tstring wexe = util::to_tstr(exe);
 		tstring wwcdir = util::to_tstr(wcdir);
 		auto obj = new CWeChatOCR(wexe.c_str(), wwcdir.c_str());
-		if (obj->wait_connection(5000)) {
+		if (obj->wait_connection(3000)) {
 			g_ocr_obj = obj;
 			Py_RETURN_TRUE;
 		} else {
