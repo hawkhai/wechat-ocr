@@ -133,7 +133,7 @@ def visualize_ocr(json_path, output_path=None):
 
     if output_path is None:
         stem = Path(json_path).stem
-        output_path = Path(json_path).parent / f"{stem}_vis.png"
+        output_path = Path(json_path).parent / f"{stem}_visualized.png"
 
     img.save(output_path)
     print(f"Saved visualization to: {output_path}")
